@@ -1,0 +1,53 @@
+<div class="formContainer">
+
+  <div class="back_button">
+    <%= link_to 'Back', articles_path %>
+  </div>
+
+  <%= form_with model: @article, local: true, html: { multipart: true } do |form| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form">
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+  <div class="form">
+    <%= form.label :body %><br>
+    <%= form.text_area :text %>
+  </div>
+
+  <label class="fileContainer">
+    IMAGE
+    <%= form.file_field :image %>
+  </label>
+
+    <%= form.submit 'SUBMIT' %>
+
+<% end %>
+
+  <div class="back_button">
+    <%= link_to 'Home', controller: '/welcome' %>
+    <%= link_to 'News', controller: '/articles' %>
+    <%= link_to 'Back', :back %>
+  </div>
+
+  <script>
+    $('svg').css('fill', 'black');
+    $('#toggle').remove();
+    $('#menu').remove();
+  </script>
+
+</div>

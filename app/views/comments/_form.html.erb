@@ -1,0 +1,11 @@
+<%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+
+    <h3>NAME</h3>
+    <%= form.text_area :commenter %> <br />
+    
+    <h3>COMMENT</h3>
+    <%= form.text_area :body %> <br />
+
+    <%= form.submit 'SUBMIT' %>
+
+<% end %>
